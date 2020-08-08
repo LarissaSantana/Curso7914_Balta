@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Shop.Controllers
@@ -11,32 +9,43 @@ namespace Shop.Controllers
     public class CategoryController : ControllerBase
     {
         [HttpGet]
-        public ActionResult Get()
+        public async Task<ActionResult<List<Category>>> Get()
         {
-            return Ok();
+            return new List<Category>();
         }
 
         [HttpGet]
         [Route("{id:int}")]
-        public ActionResult GetById(int id)
+        public async Task<ActionResult<Category>> GetById(int id)
         {
-            return Ok();
+            return new Category();
         }
 
         [HttpPost]
-        public ActionResult Post()
+        public async Task<ActionResult<Category>> Post(Category model)
         {
-            return Ok();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(model);
         }
 
         [HttpPut]
-        public ActionResult Put()
+        [Route("{id:int}")]
+        public async Task<ActionResult<Category>> Put(int id, [FromBody] Category model)
         {
-            return Ok();
+            if (model.Id != id)
+                return NotFound(new { message = "Categoria não encontrada" });
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(model);
         }
 
         [HttpDelete]
-        public ActionResult Delete()
+        [Route("{id:int}")]
+        public async Task<ActionResult<Category>> Delete()
         {
             return Ok();
         }
