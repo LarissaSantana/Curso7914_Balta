@@ -14,6 +14,17 @@ namespace Shop.Controllers
     [Route("v1/users")]
     public class UserController : ControllerBase
     {
+        [HttpGet]
+        [Authorize(Roles = "manager")]
+        public async Task<ActionResult<List<User>>> Get([FromServices] DataContext context)
+        {
+            var users = await context
+                .Users
+                .AsNoTracking()
+                .ToListAsync();
+            return users;
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult<User>> Post([FromServices] DataContext context,
@@ -53,6 +64,30 @@ namespace Shop.Controllers
                 user = user,
                 token = token
             };
+        }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        [Authorize(Roles = "manager")]
+        public async Task<ActionResult<User>> Put([FromServices] DataContext context,
+            int id, [FromBody] User model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (id != model.Id)
+                return NotFound(new { message = "Usuário não encontrado" });
+
+            try
+            {
+                context.Entry(model).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+                return model;
+            }
+            catch (Exception)
+            {
+                return BadRequest(new { message = "Não foi possível atualizar o usuário" });
+            }
         }
     }
 }
