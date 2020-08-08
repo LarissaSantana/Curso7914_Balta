@@ -33,6 +33,4 @@ D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.O
 D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-D:\LARISSA\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.csproj.CoreCompileInputs.cache
-D:\LARISSA\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.MvcApplicationPartsAssemblyInfo.cache
 D:\LARISSA\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.csproj.CopyComplete
