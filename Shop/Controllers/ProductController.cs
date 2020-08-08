@@ -22,5 +22,32 @@ namespace Shop.Controllers
 
             return Ok(produtcs);
         }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<ActionResult<Product>> GetById(int id,
+           [FromServices] DataContext context)
+        {
+            var product = await context.Products
+                .Include(p => p.Category)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            return Ok(product);
+        }
+
+        [HttpGet]
+        [Route("categories/{id:int}")]
+        public async Task<ActionResult<List<Product>>> GetByCategory(int id,
+            [FromServices] DataContext context)
+        {
+            var products = await context.Products
+                            .Include(p => p.Category)
+                            .AsNoTracking()
+                            .Where(p => p.CategoryId == id)
+                            .ToListAsync();
+
+            return products;
+        }
     }
 }
