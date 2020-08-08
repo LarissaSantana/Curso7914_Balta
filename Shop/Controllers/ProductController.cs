@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shop.Data;
 using Shop.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +13,7 @@ namespace Shop.Controllers
     public class ProductController : ControllerBase
     {
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<List<Product>>> Get([FromServices] DataContext context)
         {
             var produtcs = await context.Products
@@ -25,6 +26,7 @@ namespace Shop.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Product>> GetById(int id,
            [FromServices] DataContext context)
         {
@@ -38,6 +40,7 @@ namespace Shop.Controllers
 
         [HttpGet]
         [Route("categories/{id:int}")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<Product>>> GetByCategory(int id,
             [FromServices] DataContext context)
         {
@@ -51,6 +54,7 @@ namespace Shop.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "employee")]
         public async Task<ActionResult<Product>> Post([FromBody] Product model,
             [FromServices] DataContext context)
         {
