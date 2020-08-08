@@ -49,5 +49,24 @@ namespace Shop.Controllers
 
             return products;
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Product>> Post([FromBody] Product model,
+            [FromServices] DataContext context)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                context.Products.Add(model);
+                await context.SaveChangesAsync();
+                return Ok(model);
+            }
+            catch
+            {
+                return BadRequest(new { message = "Não foi possível criar o produto!" });
+            }
+        }
     }
 }
