@@ -50,5 +50,4 @@ D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netc
 D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-D:\LARISSA\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.csproj.CoreCompileInputs.cache
-D:\LARISSA\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.MvcApplicationPartsAssemblyInfo.cache
+D:\LARISSA\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.csprojAssemblyReference.cache
