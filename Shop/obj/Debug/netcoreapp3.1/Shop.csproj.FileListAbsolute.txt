@@ -59,5 +59,4 @@ D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\Microsoft.IdentityMode
 D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-D:\LARISSA\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.csproj.CoreCompileInputs.cache
-D:\LARISSA\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.MvcApplicationPartsAssemblyInfo.cache
+D:\LARISSA\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\libman.json
