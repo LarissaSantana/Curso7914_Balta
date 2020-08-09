@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 
 namespace Shop.Controllers
 {
-    [Route("categories")]
+    [Route("v1/categories")]
     public class CategoryController : ControllerBase
     {
         [HttpGet]
         [AllowAnonymous]
+        [ResponseCache(VaryByHeader = "User-Agent", Location = ResponseCacheLocation.Any, Duration = 30)]
+        //Desabilitar o cache:
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<ActionResult<List<Category>>> Get([FromServices] DataContext context)
         {
             var categories = await context.Categories.AsNoTracking().ToListAsync();
@@ -31,7 +34,7 @@ namespace Shop.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles ="employee")]
+        [Authorize(Roles = "employee")]
         public async Task<ActionResult<Category>> Post(
             [FromBody] Category model,
             [FromServices] DataContext context)
