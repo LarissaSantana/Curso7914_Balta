@@ -35,8 +35,11 @@ namespace Shop.Controllers
 
             try
             {
+                model.Role = "employee";
                 context.Users.Add(model);
                 await context.SaveChangesAsync();
+
+                model.Password = string.Empty;
                 return model;
             }
             catch (Exception)
@@ -59,6 +62,7 @@ namespace Shop.Controllers
                 return NotFound(new { message = "Usuário ou senha inválidos" });
 
             var token = TokenServices.GenerateToken(user);
+            user.Password = string.Empty;
             return new
             {
                 user = user,
