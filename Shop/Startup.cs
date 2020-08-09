@@ -61,7 +61,10 @@ namespace Shop
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
             services.AddScoped<DataContext, DataContext>();
 
-          
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shop Api", Version = "v1" });
+            });
         }
 
         //IWebHostEnvironment - para saber em qual ambiente você está (produção ou desenvolvimento)
@@ -78,14 +81,22 @@ namespace Shop
             // Vai forçar que a api responda sobre https
             app.UseHttpsRedirection();
 
+            //vai permitir ter uma especificação da API no formato json
+            app.UseSwagger();
+            // adicionando uma ferramenta visual pra testar a aplicação
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shop API V1");
+            });
+
+            //Utilizar o padrão de rotas
+            app.UseRouting();
+
             //isso vai permitir fazer chamadas em localhost para a api
             //enquanto estiver em tempo de desenvolvimento
             app.UseCors(x => x.AllowAnyOrigin()
                              .AllowAnyMethod()
                              .AllowAnyHeader());
-
-            //Utilizar o padrão de rotas
-            app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
